@@ -7,18 +7,11 @@ window = QWidget()
 window.resize(900,600)
 window2 = QWidget()
 window2.resize(900,600)
-window3 = QWidget()
-window3.resize(900,600)
-IS_1_TIMER = False
 
 def change_1_to_2():
     window2.setLayout(layout2)
     window2.show()
-def change_2_to_3():
-    window3.setLayout(screen3)
-    window3.show()
 def timer1_start():
-    global start
     start = time.time()
     current_time = time.time() - start
     while current_time < 30:
@@ -81,31 +74,7 @@ layout2.addLayout(line_main)
 layout2.addLayout(line_timer)
 window.setLayout(layout1)
 button_start.pressed.connect(change_1_to_2)
-button_end.pressed.connect(change_2_to_3)
 timer1_start_button.pressed.connect(timer1_start)
-
-
-
-screen3 = QVBoxLayout()
-result_number = ((90+88+77) - 200)/10
-result_word_number = QLabel(f"Индекс Руфье: {result_number}")
-
-result_word_word = 0
-if result_number <= 3:
-    result_word_word = 'Хорошая'
-elif 3 <= result_number <= 6:
-    result_word_word = 'Средняя'
-elif 7 <= result_number <= 9:
-    result_word_word = 'Удовлетворительная'
-elif 10 <= result_number <= 14:
-    result_word_word = 'Плохая'
-elif result_number >= 15:
-    result_word_word = 'Очень плохая'
-
-result_word = QLabel(f"Работоспоссобность сердца: {result_word_word}")
-
-screen3.addWidget(result_word_number, alignment=Qt.AlignCenter)
-screen3.addWidget(result_word, alignment=Qt.AlignCenter)
 
 window.show()
 app.exec_()
