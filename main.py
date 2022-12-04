@@ -13,10 +13,16 @@ window3.resize(900,600)
 
 def change_1_to_2():
     window2.setLayout(layout2)
+    window.hide()
     window2.show()
+
+
 def change_2_to_3():
     window3.setLayout(screen3)
+    window2.hide()
     window3.show()
+
+
 def timer1_start():
     global times1, timer
     times1 = QTime(0,0,30)
@@ -24,6 +30,8 @@ def timer1_start():
     timer.timeout.connect(timer1_event)
     timer.start(1000)
     times1.toString('hh:mm:ss')
+
+
 def timer1_event():
     global times1, timer
     times1 = times1.addSecs(-1)
@@ -31,6 +39,8 @@ def timer1_event():
     if times_text == '00:00:00':
         timer.stop()
     timer_and_counter.setText(times_text)
+
+
 def timer2_start():
     global times1, timer
     times1 = QTime(0,0,0)
@@ -38,6 +48,8 @@ def timer2_start():
     timer.timeout.connect(timer2_event)
     timer.start(1500)
     times1.toString('s')
+
+
 def timer2_event():
     global times1, timer
     times1 = times1.addSecs(1)
@@ -45,6 +57,8 @@ def timer2_event():
     if times_text == '30':
         timer.stop()
     timer_and_counter.setText(times_text)
+
+
 def timer3_start():
     global times1, timer
     times1 = QTime(0,1,0)
@@ -52,18 +66,27 @@ def timer3_start():
     timer.timeout.connect(timer3_event)
     timer.start(1000)
     times1.toString('hh:mm:ss')
+
+
 def timer3_event():
     global times1, timer
+
     times1 = times1.addSecs(-1)
     timers_text = times1.toString('hh:mm:ss')
-    if int(times1.toString('hh:mm:ss')[6:8]) >= 45:
-        timer_and_counter.setStyleSheet('color: rgb(0,255,0)')
+
     if int(times1.toString('hh:mm:ss')[6:8]) <= 15:
+        timer_and_counter.setStyleSheet('color: rgb(0,255,0)')
+    elif int(times1.toString('hh:mm:ss')[6:8]) >= 45:
         timer_and_counter.setStyleSheet('color: rgb(0,255,0)')
     else:
         timer_and_counter.setStyleSheet('color: rgb(0,0,0)')
-    print(int(timers_text[6:8]))
+    
+    if timers_text == '00:00:00':
+        timer.stop()
+
     timer_and_counter.setText(timers_text)
+
+
 label_introduction = QLabel('Добро пожаловать в программу по определению состояния здоровья!')
 label_rules = QLabel('Данное приложение позволит вам с помощью теста Руфье провести перечную диагностику вашего здоровья.\nПроба Руфье представляет собой нагрузочный комплекс, предназначенный для оценки работоспособности сердца при физической нагрузке.\nУ испытуемого, находящегося в положении лежа на спине в течение 5 мин\nУ испытуемого, находящегося в положении лежа на спине в течение 5 мин\nУ испытуемого, находящегося в положении лежа на спине в течение 5 мин определяют частоту пульса за 15 секунд; затем в течение 45 секунд испытуемый выполняет 30 приседаний.\nПосле окончания нагрузки испытуемый ложится, и у него вновь подсчитывается число пульсаций за первый 15 секунд\nа потом - за последние 15 секунд первой минуты периода восстановления\nВажно! Если в процессе проведения испытания вы почувствуете себя плохо (появится головокружение, шум в ушах, сильная одышка и др.), то\nтест необходимо прервать и обратиться к врачу ')
 button_start = QPushButton('Начать')
@@ -147,5 +170,7 @@ result_word = QLabel(f"Работоспоссобность сердца: {resul
 screen3.addWidget(result_word_number, alignment=Qt.AlignCenter)
 screen3.addWidget(result_word, alignment=Qt.AlignCenter)
 
+window.show()
+app.exec_()
 window.show()
 app.exec_()
