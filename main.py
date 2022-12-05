@@ -150,7 +150,8 @@ final_button.pressed.connect(timer3_start)
 
 
 screen3 = QVBoxLayout()
-result_number = ((90+88+77) - 200)/10
+
+result_number = (int(P1+P2+P3) - 200)/10
 result_word_number = QLabel(f"Индекс Руфье: {result_number}")
 
 result_word_word = 0
