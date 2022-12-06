@@ -18,6 +18,10 @@ def change_1_to_2():
 
 
 def change_2_to_3():
+    global p1, p2, p3
+    p1 = text_enter_result1.text()
+    p2 = final_text_enter.text()
+    p3 = final1_text_enter.text()
     window3.setLayout(screen3)
     window2.hide()
     window3.show()
@@ -148,10 +152,9 @@ timer1_start_button.pressed.connect(timer1_start)
 counter_start_button.pressed.connect(timer2_start)
 final_button.pressed.connect(timer3_start)
 
-
 screen3 = QVBoxLayout()
 
-result_number = (int(P1+P2+P3) - 200)/10
+result_number = (int(p1+p2+p3) - 200)/10
 result_word_number = QLabel(f"Индекс Руфье: {result_number}")
 
 result_word_word = 0
