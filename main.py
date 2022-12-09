@@ -26,10 +26,33 @@ def change_2_to_3():
     result_number = (int(p1) + int(p2) + int(p3) - 200) / 10
 
 
-    result_word_word = '0'
-    if age >= 15:
-        result_word_word = 'Хорошая'
 
+    result_word_word = '0'
+
+    coeff = 0 
+
+    if age == 13 or age == 14:
+        coeff += 1.5
+    elif age < 12 and age > 10:
+        coeff += 3
+    elif age < 11 and age > 8:
+        coeff += 4.5
+    else:
+        coeff += 6
+
+
+    if result_number > 15 + coeff:
+        result_word_word = 'Низкий'
+    elif result_number >= 11 + coeff and result_number <= 14.9 + coeff:
+        result_word_word = 'Удовлетворительный'
+    elif result_number >= 6 + coeff and result_number <= 10.9 + coeff:
+        result_word_word = 'Средний'
+    elif result_number >= 0.5 + coeff and result_number <= 5.9 + coeff:
+        result_word_word = 'Выше среднего'
+    else:
+        result_word_word = 'Высокий'
+
+    
     result_word_number = QLabel(f"Индекс Руфье: {result_number}")
 
     result_word = QLabel(f"Работоспоссобность сердца: {result_word_word}")
