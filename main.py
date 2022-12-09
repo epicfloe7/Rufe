@@ -18,26 +18,22 @@ def change_1_to_2():
 
 
 def change_2_to_3():
+    age = text_enter_age.text()
     p1 = text_enter_result1.text()
     p2 = final_text_enter.text()
     p3 = final1_text_enter.text()
-    result_number = (int(p1 + p2 + p3) - 200) / 10
+
+    result_number = (int(p1) + int(p2) + int(p3) - 200) / 10
+
+
+    result_word_word = '0'
+    if age >= 15:
+        result_word_word = 'Хорошая'
 
     result_word_number = QLabel(f"Индекс Руфье: {result_number}")
 
-    result_word_word = 0
-    if result_number <= 3:
-        result_word_word = 'Хорошая'
-    elif 3 <= result_number <= 6:
-        result_word_word = 'Средняя'
-    elif 7 <= result_number <= 9:
-        result_word_word = 'Удовлетворительная'
-    elif 10 <= result_number <= 14:
-        result_word_word = 'Плохая'
-    elif result_number >= 15:
-        result_word_word = 'Очень плохая'
-
     result_word = QLabel(f"Работоспоссобность сердца: {result_word_word}")
+
 
     screen3.addWidget(result_word_number, alignment=Qt.AlignCenter)
     screen3.addWidget(result_word, alignment=Qt.AlignCenter)
@@ -176,5 +172,4 @@ screen3 = QVBoxLayout()
 
 window.show()
 app.exec_()
-window.show()
-app.exec_()
+
