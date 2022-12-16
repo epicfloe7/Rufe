@@ -8,6 +8,7 @@ window.resize(900,600)
 window2 = QWidget()
 window2.resize(900,600)
 window3 = QWidget()
+window_report = QWidget()
 window3.resize(900,600)
 
 
@@ -18,18 +19,22 @@ def change_1_to_2():
 
 
 def change_2_to_3():
-    age = text_enter_age.text()
-    p1 = text_enter_result1.text()
-    p2 = final_text_enter.text()
-    p3 = final1_text_enter.text()
+    try:
+        age = int(text_enter_age.text())
+        p1 = text_enter_result1.text()
+        p2 = final_text_enter.text()
+        p3 = final1_text_enter.text()
+    except ValueError:
+        print('Error')
+        report_layout.addWidget(report_text, alignment=Qt.AlignCenter)
+        window_report.show()
 
     result_number = (int(p1) + int(p2) + int(p3) - 200) / 10
 
 
-
     result_word_word = '0'
 
-    coeff = 0 
+    coeff = 0
 
     if age == 13 or age == 14:
         coeff += 1.5
@@ -52,7 +57,7 @@ def change_2_to_3():
     else:
         result_word_word = 'Высокий'
 
-    
+
     result_word_number = QLabel(f"Индекс Руфье: {result_number}")
 
     result_word = QLabel(f"Работоспоссобность сердца: {result_word_word}")
